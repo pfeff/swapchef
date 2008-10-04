@@ -1,0 +1,16 @@
+
+<div id="subheader">
+	<h2>Recent Questions</h2>
+</div>
+
+<ol>
+	<% for question in @questions %>
+		<li>
+			<div class="question">
+				<h3><%=link_to h(question.title), question %></h3>
+			</div>
+		</li>
+	<% end %>
+</ol>
+
+<%= link_to 'New question', new_question_path %>
