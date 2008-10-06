@@ -21,3 +21,12 @@ set :branch, "master"
 role :app, application
 role :web, application
 role :db,  application, :primary => true
+
+namespace :passenger do
+  desc "Restart Passenger"
+  task :restart do
+    run "touch #{current_path}/tmp/restart.txt"
+  end
+end
+
+after :deploy, "passenger:restart"
