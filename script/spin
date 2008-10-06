@@ -1,0 +1,3 @@
+#! /bin/sh
+
+touch /home/dachef/public_html/swapchef.com/tmp/restart.txt
