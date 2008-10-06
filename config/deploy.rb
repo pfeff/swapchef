@@ -15,6 +15,7 @@ set :deploy_to, "/home/dachef/public_html/#{application}"
 # your SCM below:
 # set :scm, :subversion
 set :scm, :git
+set :branch, "master"
 
 #set :location, "swapchef.com"
 role :app, application
