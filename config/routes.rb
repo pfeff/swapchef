@@ -1,5 +1,16 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :users
+
+  map.resource :session
+  map.resource :openid_session
+
   map.resources :questions
+  
+  map.login '/login', :controller => 'sessions', :action => 'new'
+	map.login_with_openid '/login_with_openid', :controller => 'openid_sessions', :action => 'new'
+	map.signup '/signup', :controller => 'user/profiles', :action => 'new'
+  map.logout '/logout', :controller => 'sessions', :action => 'destroy'
+  map.login '/signup', :controller => 'users', :action => 'new'
 
   # The priority is based upon order of creation: first created -> highest priority.
 

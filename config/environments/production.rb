@@ -20,3 +20,6 @@ config.action_view.cache_template_loading            = true
 
 # Disable delivery errors, bad email addresses will be ignored
 # config.action_mailer.raise_delivery_errors = false
+
+# Open Id Registration URL
+CLICKPASS_REGISTRATION_URL = "http://www.clickpass.com/process_new_openid?site_key=RxAGOIFBko&process_openid_registration_url=http%3A%2F%2Fswapchef.com%2Fopenid%2Fprocess_openid_registration&requested_fields=family-name%2Cnickname%2Cgiven-name%2Cphoto-url%2Cemail&required_fields=family-name%2Cnickname%2Cgiven-name%2Cphoto-url%2Cemail&family-name_label=Family%20name&nickname_label=Nickname&given-name_label=Given%20name&photo-url_label=Profile%20photo&email_label=Email"
