@@ -1,4 +1,6 @@
 class QuestionsController < ApplicationController
+  before_filter :login_required, :except => [:index, :show]
+  require_role :admin, :only => [:destroy]
   # GET /questions
   # GET /questions.xml
   def index

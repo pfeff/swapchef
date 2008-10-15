@@ -23,13 +23,14 @@ class OpenidController < ApplicationController
     authenticate_with_open_id(url) do |status, identity_url|
       if status.successful?
          logger.info "OpenID verification succeeded"
-         if @current_user = @account.users.find_by_identity_url(identity_url)
-           logger.info "Logging in"
-           successful_login
-         else
-           logger.info "Redirecting to registration"
-           redirect_to :action => 'register'
-         end
+         # if @current_user = @account.users.find_by_identity_url(identity_url)
+           # logger.info "Logging in"
+           # successful_login
+         # else
+           # logger.info "Redirecting to registration"
+           # redirect_to :action => 'register'
+         # end
+         successful_login
        else
          logger.info "Login failed: #{result.message}"
        end
@@ -40,7 +41,7 @@ class OpenidController < ApplicationController
   private
   
   def successful_login
-    session[:user_id] = @current_user.id
+    # session[:user_id] = @current_user.id
     redirect_to('/')
   end
   

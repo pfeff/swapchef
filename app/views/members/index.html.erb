@@ -1,0 +1,12 @@
+<% title "Members" %>
+
+<ul>
+  <% for member in @members %>
+    <li>
+	    <p>Login: <%=h member.login %></p>
+		<p>Email: <%= h member.email %></p>
+	    <p><%= link_to "Show", member %></p>
+	</li>
+  <% end %>
+</ul>
+

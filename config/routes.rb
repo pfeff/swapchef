@@ -1,4 +1,13 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :roles
+
+  map.resources :members
+
+# You can have the root of your site routed with map.root -- just remember to delete public/index.html.
+map.root :controller => "questions"
+
+  map.resources :invitations
+
   map.resources :users
 
   map.resource :session
@@ -6,11 +15,21 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :questions
   
+	map.signup '/signup/:invitation_token', :controller => 'users', :action => 'new'
   map.login '/login', :controller => 'sessions', :action => 'new'
-	map.login_with_openid '/login_with_openid', :controller => 'openid_sessions', :action => 'new'
-	map.signup '/signup', :controller => 'user/profiles', :action => 'new'
   map.logout '/logout', :controller => 'sessions', :action => 'destroy'
-  map.login '/signup', :controller => 'users', :action => 'new'
+  
+	map.open_id_complete 'session', :controller => 'sessions', :action => 'create', :requirements => { :method => :get }
+
+  map.namespace :user do |user|
+		user.resources :activations
+		user.resources :invitations
+		user.resources :openid_accounts 
+		user.resources :passwords
+    user.resources :profiles do |profiles|
+			profiles.resources :password_settings
+		end
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
 
@@ -43,8 +62,6 @@ ActionController::Routing::Routes.draw do |map|
   #     admin.resources :products
   #   end
 
-  # You can have the root of your site routed with map.root -- just remember to delete public/index.html.
-  map.root :controller => "questions"
 
   # See how all your routes lay out with "rake routes"
 
