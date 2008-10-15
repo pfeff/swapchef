@@ -28,7 +28,7 @@
 			<div id="navigation_container">
 				<% ubermenu :id => 'main_navigation' do |m| %>
 				  <% m.action 'Homepage', root_path %>
-					<% if_logged_in? do %>
+					<% if_admin? do %>
 				  	<% m.action 'Members', members_path %>
 					<% end %>
 			    <% if_admin? do %>
@@ -43,7 +43,7 @@
 		</div>  
 
 		<div id="ft"><!-- footer -->
-			<p>Copyright 2008 Your Company</p>
+			<p>Copyright 2008 Matt Pfefferle</p>
 		</div>  	
   
 	</div><!-- end YUI layout -->
